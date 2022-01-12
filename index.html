@@ -9,7 +9,10 @@
   </head>
 
   <body style='margin : 0px; overflow: hidden;'>
-    <a-scene embedded arjs='sourceType: webcam;'>
+<!--     <a-scene embedded arjs='sourceType: webcam;'> -->
+      <a-scene vr-mode-ui="enabled: false;"
+      renderer="logarithmicDepthBuffer: true;"
+      embedded arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
 
       <!-- create your content here. -->
       <a-text text="value: Scan the QR code" color="blue" rotation="-90 0 0"></a-text>
