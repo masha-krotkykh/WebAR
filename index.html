@@ -6,15 +6,17 @@
   <body style="margin : 0px; overflow: hidden;">
      <a-scene debug embedded arjs='trackingMethod: best; debugUIEnabled: false;'>
      <a-assets timeout="1000">
-     <a-anchor hit-testing-enabled='true'>
+
        
      <a-marker preset="hiro">
 
         
-        <a-box position='0 1 0' material='opacity: 0.5; color: #F70087;'></a-box>
+<!--         <a-box position='0 1 0' material='opacity: 0.5; color: #F70087;'></a-box> -->
+       <a-sphere id="mySphere" position='0 0 0' color="yellow" radius="0.05"></a-sphere>
        
       </a-marker>
-      <a-entity camera></a-entity>
+<!--       <a-entity camera></a-entity> -->
+       <a-camera-static/>
     </a-scene>
   </body>
 </html>
