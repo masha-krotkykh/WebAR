@@ -15,7 +15,6 @@ model-viewer {
   background-color: #ffffff;
 }
 
-
 .progress-bar {
   display: block;
   width: 33%;
@@ -58,12 +57,13 @@ model-viewer {
   bottom: 16px;
   padding: 0px 16px 0px 40px;
   font-family: Roboto Regular, Helvetica Neue, sans-serif;
-  font-size: 14px;
+  font-size: 1em;
   color:#4285f4;
   height: 36px;
   line-height: 36px;
   border-radius: 18px;
   border: 1px solid #DADCE0;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, .5);
 }
 
 #ar-button:active {
@@ -76,6 +76,22 @@ model-viewer {
 
 #ar-button:focus-visible {
   outline: 1px solid #4285f4;
+}
+
+#animation_btn {
+  border: none;
+  border-radius: 50%;
+  background-color: #000000;
+  padding: 15px 23px;
+  font-family: Roboto Regular, Helvetica Neue, sans-serif;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 2em;
+  margin: 2%;
+  cursor: pointer;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, .5);
 }
 
 @keyframes circle {
