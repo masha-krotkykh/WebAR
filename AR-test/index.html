@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <meta name = "viewport" content ="width=device-width, initial-scale=1.0, user-scalable=no">
     <link type="text/css" href="./styles.css" rel="stylesheet"/>
     <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
     <script src="https://unpkg.com/focus-visible@5.2.0/dist/focus-visible.js" defer></script>
@@ -15,10 +16,8 @@
       ar
       ar-modes="webxr scene-viewer quick-look"
       camera-controls
-
       camera-orbit="-23deg 114.6deg auto"
-      auto-rotate
-      ar-placement="none">
+      auto-rotate>
 
     <div class="progress-bar hide" slot="progress-bar">
         <div class="update-bar"></div>
@@ -27,7 +26,7 @@
         Start AR
     </button>
     <button id="animation_btn" onclick="playAnimation()" id="animation">
-        &#x269D;
+        
     </button>
     <div id="ar-prompt">
         <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
