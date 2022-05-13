@@ -12,7 +12,7 @@ body {
 
 video {
   position: absolute;
-  
+
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -84,7 +84,7 @@ model-viewer {
   background-size: 3em 3em;
   background-position: 50% 50%;
   background-color: #000;
-  margin-top: 2em;
+  margin-top: 50px;
   margin-left: 2em;
   border-radius: 50%;
   box-shadow: 5px 5px 30px 0 rgba(0, 0, 0, .3);
