@@ -10,6 +10,10 @@ body {
   background-color: #eee;
 }
 
+video {
+  position: absolute;
+}
+
 model-viewer {
   width: 100%;
   height: 90%;

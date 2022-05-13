@@ -1,5 +1,6 @@
 const modelViewer = document.querySelector( 'model-viewer' );
 let animationOpen = false;
+const video = document.createElement("video");
 
 // Handles loading the events for <model-viewer>'s slotted progress bar
 const onProgress = (event) => {
@@ -15,6 +16,7 @@ const onProgress = (event) => {
     // }
   }
 };
+
 modelViewer.addEventListener('progress', onProgress);
 
 function playAnimation() {
@@ -30,6 +32,14 @@ function playAnimation() {
     animationOpen = false;
   }
 
-  console.log(animationOpen);
 
+  cameraStream();
+}
+
+function cameraStream() {
+  navigator.mediaDevices.getUserMedia({video: true}).then((stream) => {
+    video.srcObject = stream;
+    video.play();
+  });
+  document.body.appendChild(video);
 }
