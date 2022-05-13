@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link type="text/css" href="./styles.css" rel="stylesheet"/>
     <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
-    <script src="https://unpkg.com/focus-visible@5.2.0/dist/focus-visible.js" defer></script>
+    <!-- <script src="https://unpkg.com/focus-visible@5.2.0/dist/focus-visible.js" defer></script> -->
   </head>
   <body>
     <!-- <model-viewer> HTML element -->
@@ -19,26 +19,21 @@
       ios-src="assets/models/bl-8800opti_anim.usdz"
       ar
       ar-modes="webxr scene-viewer quick-look"
-      ar-placement="none"            
+
       camera-controls
       camera-orbit="-23deg 114.6deg auto"
       auto-rotate>
-      
-      
 
     <div class="progress-bar hide" slot="progress-bar">
         <div class="update-bar"></div>
     </div>
-    
-    <button slot="ar-button" id="ar-button">
+
+    <button id="ar_btn" onclick="cameraStream()">
     </button>
-      
-    <button id="animation_btn" onclick="playAnimation()" id="animation">
+
+    <button id="animation_btn" onclick="playAnimation()">
     </button>
-      
-    <div id="ar-prompt">
-        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
-    </div>
+
 </model-viewer>
 
     <script src="script.js"></script>

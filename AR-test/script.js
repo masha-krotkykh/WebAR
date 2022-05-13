@@ -1,6 +1,7 @@
 const modelViewer = document.querySelector( 'model-viewer' );
 let animationOpen = false;
 const video = document.createElement("video");
+let videoStreaming = false;
 
 // Handles loading the events for <model-viewer>'s slotted progress bar
 const onProgress = (event) => {
@@ -11,9 +12,6 @@ const onProgress = (event) => {
     progressBar.classList.add('hide');
   } else {
     progressBar.classList.remove('hide');
-    // if (event.detail.totalProgress === 0) {
-    //   event.target.querySelector('.center-pre-prompt').classList.add('hide');
-    // }
   }
 };
 
@@ -31,9 +29,6 @@ function playAnimation() {
     modelViewer.play({repetitions: 1});
     animationOpen = false;
   }
-
-
-  cameraStream();
 }
 
 function cameraStream() {
