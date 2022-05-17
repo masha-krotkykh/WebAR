@@ -32,12 +32,20 @@ function playAnimation() {
 }
 
 function cameraStream() {
-  navigator.mediaDevices.getUserMedia({
+  
+  video.setAttribute('autoplay', '');
+  video.setAttribute('muted', '');
+  video.setAttribute('playsinline', '');
+  
+  const facingMode = "environment";
+  const constraints = {
     audio: false,
     video: {
-      facingMode: 'environment'
+      facingMode
     }
-  })
+  };
+  
+  navigator.mediaDevices.getUserMedia(constraints)
   .then((stream) => {
     video.srcObject = stream;
     video.play();
