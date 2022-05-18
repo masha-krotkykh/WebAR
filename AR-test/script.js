@@ -33,6 +33,8 @@ function playAnimation() {
 
 function cameraStream() {
   
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+  
   video.setAttribute('autoplay', '');
   video.setAttribute('muted', '');
   video.setAttribute('playsinline', '');
