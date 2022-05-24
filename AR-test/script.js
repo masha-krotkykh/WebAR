@@ -32,16 +32,25 @@ function playAnimation() {
 }
 
 function cameraStream() {
-
   navigator.mediaDevices.getUserMedia({
     audio: false,
-    video: true
+    video: {facingMode: 'environment'},
+    //video: true,
   }).then((stream) => {
-    stream.getVideoTracks()[0].onended = () => console.log("ended");
-    video.setAttribute('playsinline', true);
-    video.srcObject = stream;
-    video.play();
-  })
-document.body.appendChild(video);
+    //stream.getVideoTracks()[0].onended = () => console.log("ended");
+    if(!videoStreaming) {
+      video.setAttribute('playsinline', true);
+      video.srcObject = stream;
+      video.play();
+      document.body.appendChild(video);
+      videoStreaming = true;
+    }
 
+    else if(videoStreaming) {
+      stream.getVideoTracks()[0].stop();
+      video.src = '';
+      document.body.removeChild(video);
+      videoStreaming = false;
+    }
+  })
 }
