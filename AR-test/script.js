@@ -32,7 +32,8 @@ function playAnimation() {
 }
 
 function cameraStream() {
-  navigator.mediaDevices.getUserMedia({
+  navigator.mediaDevices.getMedia = (navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+  navigator.mediaDevices.getMedia({
     audio: false,
     video: {facingMode: 'environment'},
     //video: true,
