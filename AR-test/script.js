@@ -32,27 +32,36 @@ function playAnimation() {
 }
 
 function cameraStream() {
-  navigator.mediaDevices.getMedia = (navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
-  navigator.mediaDevices.getMedia({
-    audio: false,
-    video: {facingMode: 'environment'},
-    //video: true,
-  }).then((stream) => {
-    //stream.getVideoTracks()[0].onended = () => console.log("ended");
-    if(!videoStreaming) {
-      video.setAttribute('playsinline', true);
-      video.setAttribute('controls', true);
-      video.srcObject = stream;
-      video.play();
-      document.body.appendChild(video);
-      videoStreaming = true;
-    }
+  // navigator.mediaDevices.getMedia = (navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({
+        audio: false,
+        video: {facingMode: 'environment'},
+        //video: true,
+      }).then((stream) => {
+        //stream.getVideoTracks()[0].onended = () => console.log("ended");
+        if(!videoStreaming) {
+          video.setAttribute('playsinline', true);
+          video.setAttribute('autoplay', '');
+          video.setAttribute('muted', '');
+          //video.setAttribute('controls', true);
+          video.srcObject = stream;
+          video.play();
+          document.body.appendChild(video);
+          videoStreaming = true;
+        }
 
-    else if(videoStreaming) {
-      stream.getVideoTracks()[0].stop();
-      video.src = '';
-      video.remove();
-      videoStreaming = false;
+        else if(videoStreaming) {
+          stream.getTracks().forEach(function(track) {
+            track.stop();
+          });
+          video.srcObject = null;
+          video.remove();
+          videoStreaming = false;
+        }
+      })
     }
-  })
+     else {
+       console.log ("navigator.mediaDevices not supported");
+     }
 }
