@@ -33,24 +33,15 @@ function playAnimation() {
 
 function cameraStream() {
 
-  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-
-  video.setAttribute('autoplay', '');
-  video.setAttribute('muted', '');
-  video.setAttribute('playsinline', '');
-
-  const facingMode = "environment";
-  const constraints = {
+  navigator.mediaDevices.getUserMedia({
     audio: false,
-    video: {
-      facingMode
-    }
-  };
-
-  navigator.mediaDevices.getUserMedia(constraints)
-  .then((stream) => {
+    video: true
+  }).then((stream) => {
+    stream.getVideoTracks()[0].onended = () => console.log("ended");
+    video.setAttribute('playsinline', true);
     video.srcObject = stream;
     video.play();
-  });
-  document.body.appendChild(video);
+  })
+document.body.appendChild(video);
+
 }
