@@ -41,6 +41,7 @@ function cameraStream() {
     //stream.getVideoTracks()[0].onended = () => console.log("ended");
     if(!videoStreaming) {
       video.setAttribute('playsinline', true);
+      video.setAttribute('controls', true);
       video.srcObject = stream;
       video.play();
       document.body.appendChild(video);
@@ -50,7 +51,7 @@ function cameraStream() {
     else if(videoStreaming) {
       stream.getVideoTracks()[0].stop();
       video.src = '';
-      document.body.removeChild(video);
+      video.remove();
       videoStreaming = false;
     }
   })
