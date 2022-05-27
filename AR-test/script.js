@@ -1,6 +1,10 @@
 const modelViewer = document.querySelector( 'model-viewer' );
 let animationOpen = false;
 const video = document.createElement("video");
+video.setAttribute('playsinline', true);
+video.setAttribute('autoplay', '');
+video.setAttribute('muted', '');
+// video.setAttribute('controls', true);
 let videoStreaming = false;
 
 // Handles loading the events for <model-viewer>'s slotted progress bar
@@ -32,6 +36,7 @@ function playAnimation() {
 }
 
 function cameraStream() {
+
   navigator.mediaDevices.getMedia = (navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
   if(!videoStreaming){
     navigator.mediaDevices.getMedia({
@@ -39,10 +44,6 @@ function cameraStream() {
       video: {facingMode: 'environment'}
     })
     .then(stream => {
-      video.setAttribute('playsinline', true);
-      video.setAttribute('autoplay', '');
-      video.setAttribute('muted', '');
-      //video.setAttribute('controls', true);
       window.localStream = stream;
       video.srcObject = stream;
       video.play();
@@ -61,41 +62,4 @@ function cameraStream() {
  videoStreaming = !videoStreaming;
 };
 
-
-
-
-
-// function cameraStream() {
-//   // navigator.mediaDevices.getMedia = (navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
-//     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-//       navigator.mediaDevices.getUserMedia({
-//         audio: false,
-//         video: {facingMode: 'environment'},
-//         //video: true,
-//       }).then((stream) => {
-//         //stream.getVideoTracks()[0].onended = () => console.log("ended");
-//         if(!videoStreaming) {
-//           video.setAttribute('playsinline', true);
-//           video.setAttribute('autoplay', '');
-//           video.setAttribute('muted', '');
-//           //video.setAttribute('controls', true);
-//           video.srcObject = stream;
-//           video.play();
-//           document.body.appendChild(video);
-//           videoStreaming = true;
-//         }
-//
-//         else if(videoStreaming) {
-//           stream.getVideoTracks().forEach(function(track) {
-//             track.stop();
-//           });
-//           video.srcObject = null;
-//           video.remove();
-//           videoStreaming = false;
-//         }
-//       })
-//     }
-//      else {
-//        console.log ("navigator.mediaDevices not supported");
-//      }
-// }
+console.log(modelViewer);
