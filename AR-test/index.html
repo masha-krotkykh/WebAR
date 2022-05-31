@@ -12,10 +12,11 @@
   </head>
   <body>
     <!-- <model-viewer> HTML element -->
-    <model-viewer bounds="tight"
+    <model-viewer
+      bounds="tight"
       enable-pan
       poster="assets/img/poster.webp"
-      src="assets/models/8800opti_anim.gltf"
+      src=""
       ios-src="assets/models/bl-8800opti_anim.usdz"
 
       ar-modes="webxr scene-viewer quick-look"
@@ -32,6 +33,21 @@
     </button>
 
     <button id="animation_btn" onclick="playAnimation()">
+    </button>
+
+    <button id="wht_btn" onclick="changeToWhite()"> wh
+    </button>
+
+    <button id="alu_btn" onclick="changeToAlu()"> al
+    </button>
+
+    <button id="blk_btn" onclick="changeToBlack()"> bk
+    </button>
+
+    <button id="opt_btn" onclick="changeToOptilux()"> opti
+    </button>
+
+    <button id="lens_btn" onclick="changeToLens()"> lens
     </button>
 
 </model-viewer>
