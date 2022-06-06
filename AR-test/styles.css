@@ -57,63 +57,59 @@ model-viewer {
   transition: width 0.3s;
 }
 
-#ar_btn {
-  width: 4em;
-  height: 4em;
-  padding: 3em;
-  background-image: url(assets/img/ar_icon.png);
-  background-repeat: no-repeat;
-  background-size: 3em 3em;
-  background-position: 50% 50%;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  bottom: 2em;
-  border-radius: 50%;
-  border: 1px solid #DADCE0;
-  box-shadow: 5px -5px 30px 0 rgba(0, 0, 0, .3);
-}
-
-#animation_btn {
-  width: 4em;
-  height: 4em;
-  padding: 2em;
-  background-image: url(assets/img/ar_icon.png);
-  background-repeat: no-repeat;
-  background-size: 3em 3em;
-  background-position: 50% 50%;
-  background-color: #000;
-  margin-top: 2em;
-  margin-left: 2em;
-  border-radius: 50%;
-  box-shadow: 0px 0px 30px 0 rgba(0, 0, 0, .3);
-}
-
-#default-ar-button {
-  display: none;
-}
-
-#colorButtons {
-    position: absolute;
-    bottom: 2em;
-}
-
-.colorButton {
-  width: 4em;
-  height: 4em;
-  border: none;
+.button {
+  width: 5em;
+  height: 5em;
   margin: 2em;
+  padding: 2em;
   background-repeat: no-repeat;
   background-size: contain;
+  border: none;
   border-radius: 50%;
-  box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, .3);
-  display: block;
+  font-weight: bold;
 }
 
 .button:active {
   transform: scale(.8);
 }
+
+#ar_btn {
+  background-image: url(assets/img/btn_ar.svg);
+  position: absolute;
+  left: 50%;
+  bottom: 2em;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  width: 6em;
+  height: 6em;
+}
+
+#animation_btn {
+  background-image: url(assets/img/ar_icon.png);
+  background-position: 50% 50%;
+  background-color: #000;
+  box-shadow: 0px 0px 30px 0 rgba(0, 0, 0, .3);
+  border-radius: 10%;
+  background-size: 75%;
+}
+
+#colorButtons {
+  position: absolute;
+  right: 0;
+  bottom: 2em;
+  box-shadow: 0px 0px 30px 0 rgba(0, 0, 0, .3);
+  border-radius: 20px 0 0 20px;
+}
+
+#opticsButtons {
+  border-top: .5px solid #c7c7c7
+}
+
+.colorButton, .opticsButton {
+  box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, .3);
+  display: block;
+}
+
 
 #wht_btn {
   background-image: url(assets/img/btn_white.svg);
@@ -125,6 +121,14 @@ model-viewer {
 
 #alu_btn {
   background-image: url(assets/img/btn_alu.svg);
+}
+
+#opt_btn {
+  background-image: url(assets/img/btn_opti.svg);
+}
+
+#lens_btn {
+  background-image: url(assets/img/btn_lens.svg);
 }
 
 @keyframes circle {

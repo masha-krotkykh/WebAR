@@ -6,7 +6,9 @@ video.setAttribute('autoplay', '');
 video.setAttribute('muted', '');
 // video.setAttribute('controls', true);
 let videoStreaming = false;
+
 let ar_btn = document.getElementById( "ar_btn" );
+
 let wht_btn = document.getElementById( "wht_btn" );
 let blk_btn = document.getElementById( "blk_btn" );
 let alu_btn = document.getElementById( "alu_btn" );
