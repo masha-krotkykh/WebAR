@@ -4,8 +4,7 @@
 	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:url(#SVGID_1_);}
-	.st1{fill:url(#SVGID_00000095306039219137623440000013829405622211843001_);}
-	.st2{fill:url(#SVGID_00000075849587308134425200000003375434577315497363_);}
+	.st1{fill:url(#SVGID_00000031893107413324519260000005835699894128493196_);}
 </style>
 <g id="BG">
 </g>
@@ -16,26 +15,21 @@
 <g id="Badge">
 </g>
 <g id="Details">
-	
-		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="86.8403" y1="174.6381" x2="19.1003" y2="242.3781" gradientTransform="matrix(1 0 0 -1 -306 25.3045)">
-		<stop  offset="0" style="stop-color:#000000"/>
-		<stop  offset="1" style="stop-color:#525252"/>
-	</linearGradient>
-	<circle class="st0" cx="-253.1" cy="-183.3" r="48.3"/>
 	<g>
 		
-			<linearGradient id="SVGID_00000049903052989605388980000004094494040951217843_" gradientUnits="userSpaceOnUse" x1="695.77" y1="442.4801" x2="628.3829" y2="375.093" gradientTransform="matrix(1 0 0 1 -612 -358.71)">
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="695.77" y1="442.4801" x2="628.3829" y2="375.093" gradientTransform="matrix(1 0 0 1 -612 -358.71)">
 			<stop  offset="0" style="stop-color:#000000"/>
-			<stop  offset="1" style="stop-color:#525252"/>
+			<stop  offset="1" style="stop-color:#58595B"/>
 		</linearGradient>
-		<circle style="fill:url(#SVGID_00000049903052989605388980000004094494040951217843_);" cx="50" cy="50" r="48"/>
+		<circle class="st0" cx="50" cy="50" r="48"/>
 		<g>
 			
-				<linearGradient id="SVGID_00000121996676278479562240000007600733436698113210_" gradientUnits="userSpaceOnUse" x1="-29.2781" y1="224.8761" x2="-99.249" y2="154.9052" gradientTransform="matrix(-6.123234e-17 -1 1 -6.123234e-17 -139.8906 -14.2635)">
+				<linearGradient id="SVGID_00000116223689416220452010000018038727330775555505_" gradientUnits="userSpaceOnUse" x1="-29.2781" y1="224.8761" x2="-99.249" y2="154.9052" gradientTransform="matrix(-6.123234e-17 -1 1 -6.123234e-17 -139.8906 -14.2635)">
 				<stop  offset="0" style="stop-color:#000000"/>
+				<stop  offset="0.9637" style="stop-color:#6D6E71"/>
 				<stop  offset="1" style="stop-color:#525252"/>
 			</linearGradient>
-			<path style="fill:url(#SVGID_00000121996676278479562240000007600733436698113210_);" d="M50,99.5C22.7,99.5,0.5,77.3,0.5,50
+			<path style="fill:url(#SVGID_00000116223689416220452010000018038727330775555505_);" d="M50,99.5C22.7,99.5,0.5,77.3,0.5,50
 				S22.7,0.5,50,0.5S99.5,22.7,99.5,50S77.3,99.5,50,99.5z M50,3.4C24.3,3.4,3.4,24.3,3.4,50S24.3,96.6,50,96.6S96.6,75.7,96.6,50
 				S75.7,3.4,50,3.4z"/>
 		</g>

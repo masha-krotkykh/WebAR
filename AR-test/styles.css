@@ -69,8 +69,7 @@ model-viewer {
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
-  bottom: 20px;
-  font-family: Roboto Regular, Helvetica Neue, sans-serif;
+  bottom: 2em;
   border-radius: 50%;
   border: 1px solid #DADCE0;
   box-shadow: 5px -5px 30px 0 rgba(0, 0, 0, .3);
@@ -88,11 +87,44 @@ model-viewer {
   margin-top: 2em;
   margin-left: 2em;
   border-radius: 50%;
-  box-shadow: 5px 5px 30px 0 rgba(0, 0, 0, .3);
+  box-shadow: 0px 0px 30px 0 rgba(0, 0, 0, .3);
 }
 
 #default-ar-button {
   display: none;
+}
+
+#colorButtons {
+    position: absolute;
+    bottom: 2em;
+}
+
+.colorButton {
+  width: 4em;
+  height: 4em;
+  border: none;
+  margin: 2em;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, .3);
+  display: block;
+}
+
+.button:active {
+  transform: scale(.8);
+}
+
+#wht_btn {
+  background-image: url(assets/img/btn_white.svg);
+}
+
+#blk_btn {
+  background-image: url(assets/img/btn_black.svg);
+}
+
+#alu_btn {
+  background-image: url(assets/img/btn_alu.svg);
 }
 
 @keyframes circle {

@@ -7,6 +7,9 @@ video.setAttribute('muted', '');
 // video.setAttribute('controls', true);
 let videoStreaming = false;
 let ar_btn = document.getElementById( "ar_btn" );
+let wht_btn = document.getElementById( "wht_btn" );
+let blk_btn = document.getElementById( "blk_btn" );
+let alu_btn = document.getElementById( "alu_btn" );
 
 let opti_alu = './assets/models/8800opti-al_anim.gltf';
 let opti_wh = './assets/models/8800opti-wh_anim.gltf';

@@ -29,26 +29,29 @@
         <div class="update-bar"></div>
     </div>
 
-    <button id="ar_btn" onclick="cameraStream()">
+    <button id="ar_btn" class="button" onclick="cameraStream()">
     </button>
 
-    <button id="animation_btn" onclick="playAnimation()">
+    <button id="animation_btn" class="button" onclick="playAnimation()">
     </button>
 
-    <button id="wht_btn" onclick="changeToWhite()"> wh
+    <div id="colorButtons">
+      <button id="alu_btn" class="button colorButton" onclick="changeToAlu()">
+      </button>
+
+      <button id="wht_btn" class="button colorButton" onclick="changeToWhite()">
+      </button>
+
+      <button id="blk_btn" class="button colorButton" onclick="changeToBlack()">
+      </button>
+    </div>
+
+    <button id="opt_btn" class="button opticsButton" onclick="changeToOptilux()"> opti
     </button>
 
-    <button id="alu_btn" onclick="changeToAlu()"> al
+    <button id="lens_btn" class="button opticsButton" onclick="changeToLens()"> lens
     </button>
 
-    <button id="blk_btn" onclick="changeToBlack()"> bk
-    </button>
-
-    <button id="opt_btn" onclick="changeToOptilux()"> opti
-    </button>
-
-    <button id="lens_btn" onclick="changeToLens()"> lens
-    </button>
 
 </model-viewer>
 
