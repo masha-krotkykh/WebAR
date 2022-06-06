@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{fill:url(#SVGID_00000026145310912656196920000010760361482101552512_);}
+	.st2{fill:url(#SVGID_00000045619289836391744330000003540006675709134252_);}
+</style>
+<g id="BG">
+</g>
+<g id="Shadow">
+</g>
+<g id="Color">
+</g>
+<g id="Badge">
+</g>
+<g id="Details">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="86.8403" y1="174.6381" x2="19.1003" y2="242.3781" gradientTransform="matrix(1 0 0 -1 -306 25.3045)">
+		<stop  offset="0" style="stop-color:#000000"/>
+		<stop  offset="1" style="stop-color:#525252"/>
+	</linearGradient>
+	<circle class="st0" cx="-253.1" cy="-183.3" r="48.3"/>
+	<g>
+		
+			<linearGradient id="SVGID_00000057832264872165424260000003730362858811073962_" gradientUnits="userSpaceOnUse" x1="695.7697" y1="442.4801" x2="628.3826" y2="375.093" gradientTransform="matrix(1 0 0 1 -612 -358.71)">
+			<stop  offset="0" style="stop-color:#8E8F92"/>
+			<stop  offset="0.7291" style="stop-color:#FAFAFA"/>
+			<stop  offset="1" style="stop-color:#FFFFFF"/>
+		</linearGradient>
+		<circle style="fill:url(#SVGID_00000057832264872165424260000003730362858811073962_);" cx="50" cy="50" r="48"/>
+		<g>
+			
+				<linearGradient id="SVGID_00000172413656191611541240000003666984625197590671_" gradientUnits="userSpaceOnUse" x1="-252.6573" y1="-201.1506" x2="-153.6573" y2="-201.1506" gradientTransform="matrix(6.123234e-17 1 -1 6.123234e-17 -151.1506 253.1573)">
+				<stop  offset="0" style="stop-color:#939598"/>
+				<stop  offset="1" style="stop-color:#FFFFFF"/>
+			</linearGradient>
+			<path style="fill:url(#SVGID_00000172413656191611541240000003666984625197590671_);" d="M0.5,50C0.5,22.7,22.7,0.5,50,0.5
+				S99.5,22.7,99.5,50S77.3,99.5,50,99.5S0.5,77.3,0.5,50z M50,3.4C24.3,3.4,3.4,24.3,3.4,50S24.3,96.6,50,96.6S96.6,75.7,96.6,50
+				S75.7,3.4,50,3.4z"/>
+		</g>
+	</g>
+</g>
+<g id="Tint">
+</g>
+</svg>
