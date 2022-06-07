@@ -22,7 +22,6 @@ let lens_bk = './assets/models/8800lens-bk_anim.gltf';
 let current_model = opti_bk;
 modelViewer.src = current_model;
 
-
 // Handles loading the events for <model-viewer>'s slotted progress bar
 const onProgress = (event) => {
   const progressBar = event.target.querySelector('.progress-bar');
@@ -50,7 +49,6 @@ function playAnimation() {
     animationOpen = false;
   }
 }
-
 
 function cameraStream() {
   navigator.mediaDevices.getMedia = (navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
@@ -145,4 +143,14 @@ function changeToLens() {
     current_model = lens_wh;
   }
   modelViewer.src = current_model;
+}
+
+function openNav() {
+  // document.getElementById("mySidenav").style.height = "auto";
+  document.getElementById("mySidenav").classList.add("sidenav-open");
+}
+
+function closeNav() {
+  // document.getElementById("mySidenav").style.height = "0";
+  document.getElementById("mySidenav").classList.remove("sidenav-open");
 }
