@@ -81,6 +81,7 @@ detectWebcam(function(hasWebcam) {
   console.log('Webcam: ' + (hasWebcam ? 'yes' : 'no'));
   if (hasWebcam) {
     ar_btn.setAttribute('id', 'ar_btn');
+    ar_btn.setAttribute('class', 'button');
     ar_btn.setAttribute('onclick', 'cameraStream()');
     modelViewer.appendChild(ar_btn);
   }

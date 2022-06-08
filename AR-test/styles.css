@@ -57,6 +57,36 @@ model-viewer {
   transition: width 0.3s;
 }
 
+.sidenav {
+  width: 8em;
+  transition: all 0.9s;
+
+  position: fixed;
+  z-index: 1;
+  top: -80%;
+  right: 0;
+  background: #e7e7e7;
+  overflow-y: hidden;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 0 0 0 30px;
+  box-shadow: 0px 0px 15px 0 rgba(0, 0, 0, .3);
+}
+
+.sidenav-open {
+  transition: all 0.9s;
+  height: auto;
+  top: 0px;
+}
+
+.sidenav .closebtn {
+  display: block;
+  text-align: center;
+  font-size: 5em;
+  text-decoration: none;
+  color: #000;
+}
+
 .button {
   width: 5em;
   height: 5em;
@@ -72,28 +102,38 @@ model-viewer {
 }
 
 #ar_btn {
-  width: 5em;
-  height: 5em;
-  border: none;
   background-image: url(assets/img/btn_ar.svg);
   position: absolute;
   left: 50%;
-  bottom: 2em;
+  bottom: 1%;
   transform: translateX(-50%);
   white-space: nowrap;
   margin: 0 0 2em 0;
   border-radius: 10%;
-  box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, .3);
+  box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, .15);
   z-index: 100;
 }
 
+.hamburger {
+  position: fixed;
+  right: 2%;
+  top: 1%;
+  background-image: url(assets/img/btn_hamburger.svg);
+  background-position: 50% 50%;
+  box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, .15);
+  background-size: 50%;
+
+}
+
 #animation_btn {
+  position: fixed;
+  left: 2%;
+  top: 1%;
   background-image: url(assets/img/btn_anim.svg);
   background-position: 50% 50%;
-  box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, .3);
+  box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, .15);
   background-size: 75%;
-  margin-left: 2em;
-  margin-top: 2.5em;
+
 }
 
 #opticsButtons {
@@ -135,45 +175,4 @@ model-viewer {
 @keyframes elongate {
   from { transform: translateX(100px); }
   to   { transform: translateX(-100px); }
-}
-
-.hamburger {
-  position: fixed;
-  right: 2em;
-  top: 1em;
-  background-image: url(assets/img/btn_hamburger.svg);
-  background-position: 50% 50%;
-  box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, .3);
-  background-size: 50%;
-
-}
-
-.sidenav {
-  width: 8em;
-  transition: all 0.9s;
-  height: 0;
-  position: fixed;
-  z-index: 1;
-  top: -50px;
-  right: 0;
-  background: #e7e7e7;
-  overflow-y: hidden;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border-radius: 0 0 0 30px;
-  box-shadow: 0px 0px 15px 0 rgba(0, 0, 0, .3);
-}
-
-.sidenav-open {
-  transition: all 0.9s;
-  height: auto;
-  top: 0px;
-}
-
-.sidenav .closebtn {
-  display: block;
-  text-align: center;
-  font-size: 5em;
-  text-decoration: none;
-  color: #000;
 }
