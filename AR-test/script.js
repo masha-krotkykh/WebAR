@@ -78,6 +78,7 @@ function cameraStream() {
       video.play();
       document.body.appendChild(video);
       videoStreaming = true;
+      modelViewer.removeAttribute('auto-rotate');
     })
     .catch((err) => {
       console.log(err);
@@ -89,6 +90,7 @@ function cameraStream() {
    video.src = '';
    video.remove();
    videoStreaming = false;
+   modelViewer.setAttribute('auto-rotate','true');
  }
 };
 
