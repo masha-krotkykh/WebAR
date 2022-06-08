@@ -53,16 +53,22 @@ function playAnimation() {
 }
 
 // Check if the user device has a camera. If so, create an "AR" button to allow camera stream
-navigator.getUserMedia({
-  video: true
-}, () => {
-  ar_btn.setAttribute('id', 'ar_btn');
-  ar_btn.onclick = cameraStream();
-  modelViewer.appendChild(ar_btn);
+function detectWebcam(callback) {
+  let md = navigator.mediaDevices;
+  if (!md || !md.enumerateDevices) return callback(false);
+  md.enumerateDevices().then(devices => {
+    callback(devices.some(device => 'videoinput' === device.kind));
+  })
+}
 
-}, () => {
-  console.log('no webcam')
-});
+detectWebcam(function(hasWebcam) {
+  console.log('Webcam: ' + (hasWebcam ? 'yes' : 'no'));
+  if (hasWebcam) {
+    ar_btn.setAttribute('id', 'ar_btn');
+    ar_btn.setAttribute('onclick', 'cameraStream()');
+    modelViewer.appendChild(ar_btn);
+  }
+})
 
 // Function to grab camera stream and set it instead of the background. (Turns stream on/off)
 function cameraStream() {
