@@ -72,6 +72,9 @@ model-viewer {
 }
 
 #ar_btn {
+  width: 5em;
+  height: 5em;
+  border: none;
   background-image: url(assets/img/btn_ar.svg);
   position: absolute;
   left: 50%;
@@ -81,6 +84,7 @@ model-viewer {
   margin: 0 0 2em 0;
   border-radius: 10%;
   box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, .3);
+  z-index: 100;
 }
 
 #animation_btn {
@@ -90,6 +94,7 @@ model-viewer {
   box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, .3);
   background-size: 75%;
   margin-left: 2em;
+  margin-top: 2.5em;
 }
 
 #opticsButtons {

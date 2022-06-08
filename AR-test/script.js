@@ -7,7 +7,8 @@ video.setAttribute('muted', '');
 // video.setAttribute('controls', true);
 let videoStreaming = false;
 
-let ar_btn = document.getElementById( "ar_btn" );
+// let ar_btn = document.getElementById( "ar_btn" );
+let ar_btn = document.createElement("button");
 
 let wht_btn = document.getElementById( "wht_btn" );
 let blk_btn = document.getElementById( "blk_btn" );
@@ -36,6 +37,7 @@ const onProgress = (event) => {
 
 modelViewer.addEventListener('progress', onProgress);
 
+// Handles the button to play and reverse animation and stop it at the last/first frame
 function playAnimation() {
   if(!animationOpen) {
     modelViewer.timeScale = 0.7;
@@ -50,6 +52,19 @@ function playAnimation() {
   }
 }
 
+// Check if the user device has a camera. If so, create an "AR" button to allow camera stream
+navigator.getUserMedia({
+  video: true
+}, () => {
+  ar_btn.setAttribute('id', 'ar_btn');
+  ar_btn.onclick = cameraStream();
+  modelViewer.appendChild(ar_btn);
+
+}, () => {
+  console.log('no webcam')
+});
+
+// Function to grab camera stream and set it instead of the background. (Turns stream on/off)
 function cameraStream() {
   navigator.mediaDevices.getMedia = (navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
   if(!videoStreaming && navigator.mediaDevices.getMedia != null){
@@ -77,6 +92,7 @@ function cameraStream() {
  }
 };
 
+// Color option buttons currently set to replace models completely while preserving the selection of optics.
 function changeToWhite() {
   if(current_model == opti_bk || current_model == opti_alu || current_model == opti_wh)
   {
@@ -113,6 +129,7 @@ function changeToAlu() {
   modelViewer.src = current_model;
 }
 
+// Optics option buttons currently set to replace models completely while preserving the selection of colour.
 function changeToOptilux() {
   if(current_model == opti_bk || current_model == lens_bk)
   {
@@ -145,12 +162,11 @@ function changeToLens() {
   modelViewer.src = current_model;
 }
 
+// Hamburger menu open/close setting defined CSS properties.
 function openNav() {
-  // document.getElementById("mySidenav").style.height = "auto";
   document.getElementById("mySidenav").classList.add("sidenav-open");
 }
 
 function closeNav() {
-  // document.getElementById("mySidenav").style.height = "0";
   document.getElementById("mySidenav").classList.remove("sidenav-open");
 }
