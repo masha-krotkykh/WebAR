@@ -1,41 +1,57 @@
-const modelViewer = document.querySelector( 'model-viewer' );
-let animationOpen = false;
-const video = document.createElement("video");
-video.setAttribute('playsinline', true);
-video.setAttribute('autoplay', '');
-video.setAttribute('muted', '');
-// video.setAttribute('controls', true);
-let videoStreaming = false;
 
-// let ar_btn = document.getElementById( "ar_btn" );
-let ar_btn = document.createElement("button");
+  let current_model;
+  let videoStreaming;
+  let ar_btn;
+  let opti_alu, opti_wh, opti_bk, lens_alu, lens_wh, lens_bk;
+  let animationOpen = false;
+  let video;
+  let progressBar;
+  let updatingBar;
+  let modelViewer;
 
-let wht_btn = document.getElementById( "wht_btn" );
-let blk_btn = document.getElementById( "blk_btn" );
-let alu_btn = document.getElementById( "alu_btn" );
-
-let opti_alu = './assets/models/8800opti-al_anim.gltf';
-let opti_wh = './assets/models/8800opti-wh_anim.gltf';
-let opti_bk = './assets/models/8800opti-bk_anim.gltf';
-let lens_alu = './assets/models/8800lens-alu_anim.gltf';
-let lens_wh = './assets/models/8800lens-wh_anim.gltf';
-let lens_bk = './assets/models/8800lens-bk_anim.gltf';
-let current_model = opti_bk;
-modelViewer.src = current_model;
-
-// Handles loading the events for <model-viewer>'s slotted progress bar
-const onProgress = (event) => {
-  const progressBar = event.target.querySelector('.progress-bar');
-  const updatingBar = event.target.querySelector('.update-bar');
-  updatingBar.style.width = `${event.detail.totalProgress * 100}%`;
-  if (event.detail.totalProgress === 1) {
-    progressBar.classList.add('hide');
-  } else {
-    progressBar.classList.remove('hide');
+document.addEventListener("DOMContentLoaded", function() {
+  modelViewer = document.querySelector( 'model-viewer' );
+  if(!modelViewer) {
+    console.log("Model-viewer can't be loaded"); // error message
+    return true;
   }
-};
 
-modelViewer.addEventListener('progress', onProgress);
+  video = document.createElement("video");
+  video.setAttribute('playsinline', true);
+  video.setAttribute('autoplay', '');
+  video.setAttribute('muted', '');
+  videoStreaming = false;
+
+  ar_btn = document.createElement("button");
+
+  opti_alu = './assets/models/8800opti-al_anim.gltf';
+  opti_wh = './assets/models/8800opti-wh_anim.gltf';
+  opti_bk = './assets/models/8800opti-bk_anim.gltf';
+  lens_alu = './assets/models/8800lens-alu_anim.gltf';
+  lens_wh = './assets/models/8800lens-wh_anim.gltf';
+  lens_bk = './assets/models/8800lens-bk_anim.gltf';
+
+  current_model = opti_bk;
+  if(!current_model) {
+    console.log("Current model can't be loaded"); // error message
+    return true;
+  }
+
+  modelViewer.src = current_model;
+
+  // Handles loading the events for <model-viewer>'s slotted progress bar
+  const onProgress = (event) => {
+    progressBar = event.target.querySelector('.progress-bar');
+    updatingBar = event.target.querySelector('.update-bar');
+    updatingBar.style.width = `${event.detail.totalProgress * 100}%`;
+    if ( event.detail.totalProgress === 1) {
+      progressBar.classList.add('hide');
+    } else {
+      progressBar.classList.remove('hide');
+    }
+  };
+  modelViewer.addEventListener('progress', onProgress);
+});
 
 // Handles the button to play and reverse animation and stop it at the last/first frame
 function playAnimation() {
