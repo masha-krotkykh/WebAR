@@ -58,12 +58,13 @@ model-viewer {
 }
 
 .sidenav {
+  max-width: 20%;
   width: 8em;
   transition: all 0.9s;
 
   position: fixed;
   z-index: 1;
-  top: -80%;
+  top: -1000px;
   right: 0;
   background: #e7e7e7;
   overflow-y: hidden;
