@@ -1,19 +1,21 @@
 
-  let currentModel;
-  let videoStreaming;
-  let ar_btn;
-  let opti_alu, opti_wh, opti_bk, lens_alu, lens_wh, lens_bk;
-  let animationOpen = false;
-  let video;
-  let progressBar;
-  let updatingBar;
-  let modelViewer;
-  let material, materialColor;
-
+let currentModel
+let opti, lens;
+let videoStreaming;
+let ar_btn;
+let animationOpen = false;
+let video;
+let progressBar;
+let updatingBar;
+let modelViewer;
+let material, materialColor;
+let currentColor = "black";
+let optics = "opti";
+let menuShield;
 
 document.addEventListener( "DOMContentLoaded", function () {
   modelViewer = document.querySelector( 'model-viewer' );
-  if(!modelViewer) {
+  if( !modelViewer ) {
     console.log( "Model-viewer can't be loaded" ); // error message
     return true;
   }
@@ -26,20 +28,16 @@ document.addEventListener( "DOMContentLoaded", function () {
 
   ar_btn = document.createElement( "button" );
 
-  opti_alu = './assets/models/8800opti-al_anim.gltf';
-  opti_wh = './assets/models/8800opti-wh_anim.gltf';
-  opti_bk = './assets/models/8800opti-bk_anim.gltf';
-  lens_alu = './assets/models/8800lens-alu_anim.gltf';
-  lens_wh = './assets/models/8800lens-wh_anim.gltf';
-  lens_bk = './assets/models/8800lens-bk_anim.gltf';
+  menuShield = document.getElementById( 'shieldButtons' );
 
-  currentModel = opti_bk;
+  opti = './assets/models/8800opti.gltf';
+  lens = './assets/models/8800lens.gltf';
+
+  currentModel = opti;
   if( !currentModel ) {
     console.log( "Current model can't be loaded" ); // error message
     return true;
   }
-
-  modelViewer.src = currentModel;
 
   // Handles loading the events for <model-viewer>'s slotted progress bar
   const onProgress = ( event ) => {
@@ -60,13 +58,12 @@ document.addEventListener( "DOMContentLoaded", function () {
 function playAnimation() {
   if( !animationOpen ) {
     modelViewer.timeScale = 0.7;
-    modelViewer.play( {repetitions: 1} );
+    modelViewer.play( { repetitions: 1 } );
     animationOpen = true;
   }
-
   else {
     modelViewer.timeScale = -0.7;
-    modelViewer.play( {repetitions: 1} );
+    modelViewer.play( { repetitions: 1 } );
     animationOpen = false;
   }
 }
@@ -75,7 +72,7 @@ function playAnimation() {
 function detectWebcam( callback ) {
   let md = navigator.mediaDevices;
   if ( !md || !md.enumerateDevices ) return callback( false );
-  md.enumerateDevices().then(devices => {
+  md.enumerateDevices().then( devices => {
     callback( devices.some( device => 'videoinput' === device.kind ));
   })
 }
@@ -86,17 +83,17 @@ detectWebcam( function( hasWebcam ) {
     ar_btn.setAttribute( 'id', 'ar_btn' );
     ar_btn.setAttribute( 'class', 'button' );
     ar_btn.setAttribute( 'onclick', 'cameraStream()' );
-    modelViewer.appendChild(ar_btn);
+    modelViewer.appendChild( ar_btn );
   }
 })
 
 // Function to grab camera stream and set it instead of the background. (Turns stream on/off)
 function cameraStream() {
-  navigator.mediaDevices.getMedia = (navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+  navigator.mediaDevices.getMedia = ( navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia );
   if( !videoStreaming && navigator.mediaDevices.getMedia != null ){
     navigator.mediaDevices.getMedia( {
       audio: false,
-      video: {facingMode: 'environment'}
+      video: { facingMode: 'environment' }
     } )
     .then(stream => {
       window.localStream = stream;
@@ -120,96 +117,82 @@ function cameraStream() {
  }
 };
 
-// Color option buttons currently set to replace models completely while preserving the selection of optics.
-// function changeToWhite() {
-//   if(currentModel == opti_bk || currentModel == opti_alu || currentModel == opti_wh)
-//   {
-//     currentModel = opti_wh;
-//   }
-//   else if(currentModel == lens_bk || currentModel == lens_alu || currentModel == lens_wh)
-//   {
-//     currentModel = lens_wh;
-//   }
-//   modelViewer.src = currentModel;
-// }
-//
-// function changeToBlack() {
-//   if(currentModel == opti_bk || currentModel == opti_alu || currentModel == opti_wh)
-//   {
-//     currentModel = opti_bk;
-//   }
-//   else if(currentModel == lens_bk || currentModel == lens_alu || currentModel == lens_wh)
-//   {
-//     currentModel = lens_bk;
-//   }
-//   modelViewer.src = currentModel;
-// }
-//
-// function changeToAlu() {
-//   if(currentModel == opti_bk || currentModel == opti_alu || currentModel == opti_wh)
-//   {
-//     currentModel = opti_alu;
-//   }
-//   else if(currentModel == lens_bk || currentModel == lens_alu || currentModel == lens_wh)
-//   {
-//     currentModel = lens_alu;
-//   }
-//   modelViewer.src = currentModel;
-// }
+// COLOR OPTION BUTTONS.
 
+//  picking the elements of the model that will be chnged by index
+function assignParts() {
+  if ( optics == "opti" ) {
+    profileMat = modelViewer.model.materials[0]
+  }
+  else if ( optics == "lens" ) {
+    profileMat = modelViewer.model.materials[26]
+  }
+  profileMatColor = profileMat.pbrMetallicRoughness;
+  return profileMatColor;
+}
+
+//  finding shield
+function assignShield() {
+  shieldMat = modelViewer.model.materials[1];
+  shieldMatColor = shieldMat.pbrMetallicRoughness;
+  return shieldMatColor;
+}
+
+// switching colors of the selected elements
 function changeToAlu() {
-  material = modelViewer.model.materials[0];
-  materialColor = material.pbrMetallicRoughness;
-  materialColor.setBaseColorFactor( [0.28, 0.28, 0.28, 1] );
-  materialColor.setMetallicFactor( 0.7 );
+  assignParts();
+  profileMatColor.setBaseColorFactor( [0.28, 0.28, 0.28, 1] );
+  profileMatColor.setMetallicFactor( 0.7 );
+  profileMatColor.setRoughnessFactor( 0.99 );
+  currentColor = "alu";
 }
 
 function changeToWhite() {
-  material = modelViewer.model.materials[0];
-  materialColor = material.pbrMetallicRoughness;
-  materialColor.setBaseColorFactor( [0.8, 0.8, 0.8, 1] );
-  materialColor.setMetallicFactor( 0.3 );
+  assignParts();
+  profileMatColor.setBaseColorFactor( [0.8, 0.8, 0.8, 1] );
+  profileMatColor.setMetallicFactor( 0.2 );
+  profileMatColor.setRoughnessFactor( 0.99 );
+
+  if(currentModel = opti) {
+    shieldToWhite();
+  }
+  currentColor = "white";
 }
 
 function changeToBlack() {
-  material = modelViewer.model.materials[0];
-  materialColor = material.pbrMetallicRoughness;
-  materialColor.setBaseColorFactor( [0.01, 0.01, 0.01, 1] );
-  materialColor.setMetallicFactor( 0.3 );
+  assignParts();
+  profileMatColor.setBaseColorFactor( [0.01, 0.01, 0.01, 1] );
+  profileMatColor.setMetallicFactor( 0.2 );
+  profileMatColor.setRoughnessFactor( 1.0 );
+
+  if( currentModel = opti ) {
+    shieldToBlack();
+  }
+  currentColor = "black";
+}
+
+function shieldToWhite() {
+  assignShield();
+  shieldMatColor.setBaseColorFactor( [0.8, 0.8, 0.8, 1] );
+}
+
+function shieldToBlack() {
+  shieldMatColor.setBaseColorFactor( [0.01, 0.01, 0.01, 1] );
 }
 
 // Optics option buttons currently set to replace models completely while preserving the selection of colour.
 function changeToOptilux() {
-  if( currentModel == opti_bk || currentModel == lens_bk )
-  {
-    currentModel = opti_bk;
-  }
-  else if( currentModel == opti_alu || currentModel == lens_alu )
-  {
-    currentModel = opti_alu;
-  }
-  else if( currentModel == opti_wh || currentModel == lens_wh )
-  {
-    currentModel = opti_wh;
-  }
+  currentModel = opti;
+  optics = "opti";
   modelViewer.src = currentModel;
+  menuShield.style.display = 'block';
 }
 
 function changeToLens() {
-  if( currentModel == opti_bk || currentModel == lens_bk )
-  {
-    currentModel = lens_bk;
-  }
-  else if( currentModel == opti_alu || currentModel == lens_alu )
-  {
-    currentModel = lens_alu;
-  }
-  else if( currentModel == opti_wh || currentModel == lens_wh )
-  {
-    currentModel = lens_wh;
-  }
+  currentModel = lens;
+  optics = "lens";
   modelViewer.src = currentModel;
-
+  menuShield.style.display = 'none';
 }
 
 // Hamburger menu open/close setting defined CSS properties.
