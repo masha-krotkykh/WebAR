@@ -159,6 +159,16 @@ model-viewer {
   background-image: url(assets/img/btn_alu.svg);
 }
 
+#whtS_btn {
+  background-image: url(assets/img/btn_shieldWh.svg);
+  border-radius:0;
+}
+
+#blkS_btn {
+  background-image: url(assets/img/btn_shieldBk.svg);
+  border-radius:0;
+}
+
 #opt_btn {
   background-image: url(assets/img/btn_opti.svg);
 }

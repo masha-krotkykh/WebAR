@@ -177,6 +177,7 @@ function shieldToWhite() {
 }
 
 function shieldToBlack() {
+  assignShield();
   shieldMatColor.setBaseColorFactor( [0.01, 0.01, 0.01, 1] );
 }
 
