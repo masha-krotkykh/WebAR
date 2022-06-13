@@ -2,7 +2,7 @@
 let currentModel
 let opti, lens;
 let videoStreaming;
-let ar_btn;
+let arBtn;
 let action_btns;
 let animationOpen = false;
 let video;
@@ -27,7 +27,7 @@ document.addEventListener( "DOMContentLoaded", function () {
   video.setAttribute( 'muted', '' );
   videoStreaming = false;
 
-  ar_btn = document.createElement( "button" );
+  arBtn = document.createElement( "button" );
   action_btns = document.getElementById( "actionButtons" );
 
   menuShield = document.getElementById( 'shieldButtons' );
@@ -82,10 +82,10 @@ function detectWebcam( callback ) {
 detectWebcam( function( hasWebcam ) {
   console.log( 'Webcam: ' + ( hasWebcam ? 'yes' : 'no' ));
   if ( hasWebcam ) {
-    ar_btn.setAttribute( 'id', 'ar_btn' );
-    ar_btn.setAttribute( 'class', 'button' );
-    ar_btn.setAttribute( 'onclick', 'cameraStream()' );
-    action_btns.appendChild( ar_btn );
+    arBtn.setAttribute( 'id', 'ar_btn' );
+    arBtn.setAttribute( 'class', 'button' );
+    arBtn.setAttribute( 'onclick', 'cameraStream()' );
+    action_btns.appendChild( arBtn );
   }
 })
 

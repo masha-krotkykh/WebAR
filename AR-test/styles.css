@@ -74,7 +74,7 @@ model-viewer {
 }
 
 .sidenav-open {
-  transition: all 0.9s;
+  transition: all 0.3s;
   width: auto;
   padding: 1em;
 }
@@ -162,7 +162,6 @@ model-viewer {
   margin: 10px auto;
 }
 
-
 #wht_btn {
   background-image: url(assets/img/btn_white.svg);
 }
@@ -191,17 +190,6 @@ model-viewer {
 
 #lens_btn {
   background-image: url(assets/img/btn_lens.svg);
-}
-
-
-@keyframes circle {
-  from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
-  to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
-}
-
-@keyframes elongate {
-  from { transform: translateX(100px); }
-  to   { transform: translateX(-100px); }
 }
 
 @media only screen and (min-width: 700px) {
