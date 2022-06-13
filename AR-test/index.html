@@ -32,26 +32,33 @@
       </div>
 
       <!-- <button id="ar_btn" class="button" onclick="cameraStream()"></button> -->
-      <button id="animation_btn" class="button" onclick="playAnimation()"></button>
+      <div id="actionButtons">
+        <button id="animation_btn" class="button" onclick="playAnimation()"></button>
+      </div>
       <button id="hamburger" class="hamburger button" onclick="openNav()"></button>
 
       <div id="mySidenav" class="sidenav">
         <div id="colorButtons">
-          <button id="alu_btn" class="colorButton" onclick="changeToAlu()"></button>
-          <button id="wht_btn" class="colorButton" onclick="changeToWhite()"></button>
-          <button id="blk_btn" class="colorButton" onclick="changeToBlack()"></button>
+          <h4>BODY COLOR</h4>
+          <button id="alu_btn" class="colorButton menuButton" onclick="changeToAlu()"></button>
+          <button id="wht_btn" class="colorButton menuButton" onclick="changeToWhite()"></button>
+          <button id="blk_btn" class="colorButton menuButton" onclick="changeToBlack()"></button>
         </div>
         <div id="shieldButtons">
-          <button id="whtS_btn" class="colorButton" onclick="shieldToWhite()"></button>
-          <button id="blkS_btn" class="colorButton" onclick="shieldToBlack()"></button>
+          <h4>ACCENT COLOR</h4>
+          <button id="whtS_btn" class="colorButton menuButton" onclick="shieldToWhite()"></button>
+          <button id="blkS_btn" class="colorButton menuButton" onclick="shieldToBlack()"></button>
         </div>
 
         <div id="opticsButtons">
-          <button id="opt_btn" class="opticsButton" onclick="changeToOptilux()"></button>
-          <button id="lens_btn" class="opticsButton" onclick="changeToLens()"></button>
+          <h4>OPTICS</h4>
+          <button id="opt_btn" class="opticsButton menuButton" onclick="changeToOptilux()"></button>
+          <button id="lens_btn" class="opticsButton menuButton" onclick="changeToLens()"></button>
         </div>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       </div>
+
+
 
     </model-viewer>
 

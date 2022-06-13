@@ -3,6 +3,7 @@ let currentModel
 let opti, lens;
 let videoStreaming;
 let ar_btn;
+let action_btns;
 let animationOpen = false;
 let video;
 let progressBar;
@@ -27,6 +28,7 @@ document.addEventListener( "DOMContentLoaded", function () {
   videoStreaming = false;
 
   ar_btn = document.createElement( "button" );
+  action_btns = document.getElementById( "actionButtons" );
 
   menuShield = document.getElementById( 'shieldButtons' );
 
@@ -83,7 +85,7 @@ detectWebcam( function( hasWebcam ) {
     ar_btn.setAttribute( 'id', 'ar_btn' );
     ar_btn.setAttribute( 'class', 'button' );
     ar_btn.setAttribute( 'onclick', 'cameraStream()' );
-    modelViewer.appendChild( ar_btn );
+    action_btns.appendChild( ar_btn );
   }
 })
 
