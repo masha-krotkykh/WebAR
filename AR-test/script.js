@@ -6,8 +6,7 @@ let arBtn;
 let action_btns;
 let animationOpen = false;
 let video;
-let progressBar;
-let updatingBar;
+let progressBar, updatingBar;
 let modelViewer;
 let material, materialColor;
 let currentColor = "black";
@@ -21,6 +20,7 @@ document.addEventListener( "DOMContentLoaded", function () {
     return true;
   }
 
+// Parameters for the camera feed
   video = document.createElement( "video" );
   video.setAttribute( 'playsinline', true );
   video.setAttribute( 'autoplay', '' );
@@ -29,7 +29,6 @@ document.addEventListener( "DOMContentLoaded", function () {
 
   arBtn = document.createElement( "button" );
   action_btns = document.getElementById( "actionButtons" );
-
   menuShield = document.getElementById( 'shieldButtons' );
 
   opti = './assets/models/8800opti.gltf';
@@ -121,7 +120,7 @@ function cameraStream() {
 
 // COLOR OPTION BUTTONS.
 
-//  picking the elements of the model that will be chnged by index
+//  picking the elements of the model that will be changed by index (done manually to be redone)
 function assignParts() {
   if ( optics == "opti" ) {
     profileMat = modelViewer.model.materials[0]

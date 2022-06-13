@@ -2,13 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link type="text/css" href="./styles.css" rel="stylesheet"/>
-    <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
-    <!-- <script src="https://unpkg.com/focus-visible@5.2.0/dist/focus-visible.js" defer></script> -->
   </head>
   <body>
 
@@ -31,7 +28,6 @@
           <div class="update-bar"></div>
       </div>
 
-      <!-- <button id="ar_btn" class="button" onclick="cameraStream()"></button> -->
       <div id="actionButtons">
         <button id="animation_btn" class="button" onclick="playAnimation()"></button>
       </div>
@@ -57,12 +53,8 @@
         </div>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       </div>
-
-
-
     </model-viewer>
 
-    <!-- Loads <model-viewer> for current browsers: -->
     <!-- <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script> -->
     <script type="module" src="./libs/model-viewer.min.js"></script>
     <script src="script.js" defer></script>
