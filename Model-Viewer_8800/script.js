@@ -125,57 +125,45 @@ function cameraStream() {
 };
 
 // COLOR OPTION BUTTONS.
-
-//  picking the elements of the model that will be changed by index (done manually to be redone)
-function assignParts() {
-  if ( optics == "opti" ) {
-    profileMat = modelViewer.model.materials[0]
-  }
-  else if ( optics == "lens" ) {
-    profileMat = modelViewer.model.materials[26]
-  }
-  profileMatColor = profileMat.pbrMetallicRoughness;
-  return profileMatColor;
-}
-
-//  finding shield
-function assignShield() {
-  shieldMat = modelViewer.model.materials[1];
-  shieldMatColor = shieldMat.pbrMetallicRoughness;
-  return shieldMatColor;
-}
-
 // switching colors of the selected elements
 function changeToAlu() {
-  assignParts();
-  profileMatColor.setBaseColorFactor( [0.28, 0.28, 0.28, 1] );
-  profileMatColor.setMetallicFactor( 0.7 );
-  profileMatColor.setRoughnessFactor( 0.99 );
   currentColor = "alu";
+  changeColor();
 }
 
 function changeToWhite() {
-  assignParts();
-  profileMatColor.setBaseColorFactor( [0.8, 0.8, 0.8, 1] );
-  profileMatColor.setMetallicFactor( 0.2 );
-  profileMatColor.setRoughnessFactor( 0.99 );
-
-  if(currentModel = opti) {
-    shieldToWhite();
-  }
   currentColor = "white";
+  changeColor();
 }
 
 function changeToBlack() {
-  assignParts();
-  profileMatColor.setBaseColorFactor( [0.01, 0.01, 0.01, 1] );
-  profileMatColor.setMetallicFactor( 0.2 );
-  profileMatColor.setRoughnessFactor( 1.0 );
-
-  if( currentModel = opti ) {
-    shieldToBlack();
-  }
   currentColor = "black";
+  changeColor();
+}
+
+function changeColor() {
+  assignParts();
+  if( currentColor == "alu" ) {
+    profileMatColor.setBaseColorFactor( [0.28, 0.28, 0.28, 1] );
+    profileMatColor.setMetallicFactor( 0.7 );
+    profileMatColor.setRoughnessFactor( 0.99 );
+  }
+  else if ( currentColor == "white" ) {
+    profileMatColor.setBaseColorFactor( [0.8, 0.8, 0.8, 1] );
+    profileMatColor.setMetallicFactor( 0.2 );
+    profileMatColor.setRoughnessFactor( 0.99 );
+    if(currentModel = opti) {
+      shieldToWhite();
+    }
+  }
+  else if ( currentColor == "black" ) {
+    profileMatColor.setBaseColorFactor( [0.01, 0.01, 0.01, 1] );
+    profileMatColor.setMetallicFactor( 0.2 );
+    profileMatColor.setRoughnessFactor( 1.0 );
+    if( currentModel = opti ) {
+      shieldToBlack();
+    }
+  }
 }
 
 function shieldToWhite() {
@@ -186,6 +174,25 @@ function shieldToWhite() {
 function shieldToBlack() {
   assignShield();
   shieldMatColor.setBaseColorFactor( [0.01, 0.01, 0.01, 1] );
+}
+
+//  picking the elements of the model that will be changed by index (done manually to be redone)
+function assignParts() {
+  if ( optics == "opti" ) {
+    profileMat = modelViewer.model.materials[0]
+  }
+  else if ( optics == "lens" ) {
+    profileMat = modelViewer.model.materials[26]
+  }
+  profileMatColor = profileMat.pbrMetallicRoughness;
+
+}
+
+//  finding shield
+function assignShield() {
+  shieldMat = modelViewer.model.materials[1];
+  shieldMatColor = shieldMat.pbrMetallicRoughness;
+  return shieldMatColor;
 }
 
 // Optics option buttons currently set to replace models completely while preserving the selection of colour.
@@ -214,10 +221,10 @@ function closeNav() {
 
 // Closing the side menu when clicked outside
 document.addEventListener('touchstart', function handleClickOutsideNav(event) {
+  currentFOV = modelViewer.getFieldOfView();
   if (!sideNav.contains(event.target) && !hamburger.contains(event.target)) {
-    sideNav.classList.remove( "sidenav-open" );
+    closeNav();
   }
-  const currentOrbit = modelViewer.getCameraOrbit();
-  console.log(currentOrbit);
-  modelViewer.cameraOrbit = currentOrbit;
-  });
+  modelViewer.fieldOfView = '33deg';
+  console.log(modelViewer.fieldOfView);
+});

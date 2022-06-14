@@ -11,17 +11,16 @@
 
     <!-- <model-viewer> HTML element -->
     <model-viewer
-      bounds="tight"
+
       enable-pan
       poster="assets/img/poster.webp"
       src="./assets/models/8800opti.gltf"
       ios-src="assets/models/bl-8800opti_anim.usdz"
-      ar-modes="webxr scene-viewer quick-look"
       camera-controls
-      camera-orbit="-23deg 114.6deg auto"
-      min-camera-orbit="auto auto 100m"
-      max-camera-orbit="auto auto 400m"
+      camera-orbit="-23deg 114.6deg 75m"
+      field-of-view="45m"
       min-field-of-view="5deg"
+      max-field-of-view="500deg"
       auto-rotate>
 
       <div class="progress-bar hide" slot="progress-bar">
