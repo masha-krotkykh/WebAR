@@ -11,11 +11,8 @@ let modelViewer;
 let material, materialColor;
 let currentColor = "black";
 let optics = "opti";
-let menuShield;
-let sideNav;
-let hamburger;
-let currentOrbit;
- touchAction: 'none';
+let sideNav, menuShield, hamburger;
+let currentFOV;
 
 document.addEventListener( "DOMContentLoaded", function () {
   modelViewer = document.querySelector( 'model-viewer' );
@@ -34,8 +31,8 @@ document.addEventListener( "DOMContentLoaded", function () {
   arBtn = document.createElement( "button" );
   action_btns = document.getElementById( "actionButtons" );
   menuShield = document.getElementById( 'shieldButtons' );
-  sideNav = document.getElementById ( 'mySidenav' );
-  hamburger = document.getElementById ( 'hamburger' );
+  sideNav = document.getElementById( 'mySidenav' );
+  hamburger = document.getElementById( 'hamburger' );
 
   opti = './assets/models/8800opti.gltf';
   lens = './assets/models/8800lens.gltf';
@@ -220,11 +217,16 @@ function closeNav() {
 }
 
 // Closing the side menu when clicked outside
-document.addEventListener('touchstart', function handleClickOutsideNav(event) {
+document.addEventListener( 'pointerdown', function handleClickDownOutsideNav( event ) {
+  event.preventDefault();
   currentFOV = modelViewer.getFieldOfView();
-  if (!sideNav.contains(event.target) && !hamburger.contains(event.target)) {
+  if (( !sideNav.contains( event.target )) && ( !hamburger.contains( event.target ))) {
     closeNav();
+    modelViewer.FieldOfView = currentFOV;
   }
-  modelViewer.fieldOfView = '33deg';
-  console.log(modelViewer.fieldOfView);
+});
+
+document.addEventListener( 'pointerup', function handleClickUpOutsideNav( event ) {
+  event.preventDefault();
+  modelViewer.FieldOfView = currentFOV;
 });
