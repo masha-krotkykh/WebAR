@@ -12,6 +12,10 @@ let material, materialColor;
 let currentColor = "black";
 let optics = "opti";
 let menuShield;
+let sideNav;
+let hamburger;
+let currentOrbit;
+ touchAction: 'none';
 
 document.addEventListener( "DOMContentLoaded", function () {
   modelViewer = document.querySelector( 'model-viewer' );
@@ -30,6 +34,8 @@ document.addEventListener( "DOMContentLoaded", function () {
   arBtn = document.createElement( "button" );
   action_btns = document.getElementById( "actionButtons" );
   menuShield = document.getElementById( 'shieldButtons' );
+  sideNav = document.getElementById ( 'mySidenav' );
+  hamburger = document.getElementById ( 'hamburger' );
 
   opti = './assets/models/8800opti.gltf';
   lens = './assets/models/8800lens.gltf';
@@ -199,9 +205,19 @@ function changeToLens() {
 
 // Hamburger menu open/close setting defined CSS properties.
 function openNav() {
-  document.getElementById( "mySidenav" ).classList.add( "sidenav-open" );
+  sideNav.classList.add( "sidenav-open" );
 }
 
 function closeNav() {
-  document.getElementById( "mySidenav" ).classList.remove( "sidenav-open" );
+  sideNav.classList.remove( "sidenav-open" );
 }
+
+// Closing the side menu when clicked outside
+document.addEventListener('touchstart', function handleClickOutsideNav(event) {
+  if (!sideNav.contains(event.target) && !hamburger.contains(event.target)) {
+    sideNav.classList.remove( "sidenav-open" );
+  }
+  const currentOrbit = modelViewer.getCameraOrbit();
+  console.log(currentOrbit);
+  modelViewer.cameraOrbit = currentOrbit;
+  });
