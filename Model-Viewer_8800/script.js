@@ -210,10 +210,12 @@ function changeToLens() {
 // Hamburger menu open/close setting defined CSS properties.
 function openNav() {
   sideNav.classList.add( "sidenav-open" );
+  hamburger.style.display = 'none';
 }
 
 function closeNav() {
   sideNav.classList.remove( "sidenav-open" );
+  hamburger.style.display = 'block';
 }
 
 // Closing the side menu when clicked outside
